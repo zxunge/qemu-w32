@@ -4,6 +4,9 @@ name: QEMU for W32
 
 # Controls when the workflow will run
 on:
+  push:
+    branches:
+      [ "main" ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -40,13 +43,13 @@ jobs:
           cd qemu
           git submodule init
           git submodule update --recursive
-          ./configure --prefix=/d/123/qemu-w32 --enable-sdl --enable-gtk
+          ./configure --prefix=/opt/qemu --enable-sdl --enable-gtk
           make install
 
       - uses: actions/upload-artifact@v4
         with:
           name: QEMU
-          path: /d/123/qemu-w32
+          path: /opt/qemu
            
           
     
