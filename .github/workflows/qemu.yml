@@ -33,7 +33,11 @@ jobs:
             mingw-w64-i686-libslirp
 
       - shell: msys2 {0}
-        run: .ci/build.sh
+        run: |
+          git clone https://gitlab.com/qemu-project/qemu.git
+          cd qemu
+          ./configure --prefix=${{ github.workspace }}/qemu-w32 --enable-sdl --enable-gtk --enable-whpx
+          make install
 
       - uses: actions/upload-artifact@v4
         with:
