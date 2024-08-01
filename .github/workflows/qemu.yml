@@ -25,6 +25,7 @@ jobs:
         with:
           update: true
           msystem: mingw32
+          location: D:\
           install: >-
             git
             wget
@@ -43,13 +44,13 @@ jobs:
           cd qemu
           git submodule init
           git submodule update --recursive
-          ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk --extra-cflags=-Wno-incompatible-pointer-types
+          ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk --extra-cflags=-w
           make install
 
       - uses: actions/upload-artifact@v4
         with:
           name: QEMU
-          path: /opt/qemu
+          path: D:/msys64/opt/qemu
            
           
     
