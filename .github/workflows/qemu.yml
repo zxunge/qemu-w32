@@ -41,10 +41,11 @@ jobs:
         name: build qemu
         run: |
           git clone https://gitlab.com/qemu-project/qemu.git
+          cp -rf configure qemu/
           cd qemu
           git submodule init
           git submodule update --recursive
-          ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk --extra-cflags=-w
+          ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk
           make -j$(nproc) install
 
       - uses: actions/upload-artifact@v4
