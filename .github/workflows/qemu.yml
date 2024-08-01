@@ -45,7 +45,7 @@ jobs:
           git submodule init
           git submodule update --recursive
           ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk --extra-cflags=-w
-          make install
+          make -j$(nproc) install
 
       - uses: actions/upload-artifact@v4
         with:
