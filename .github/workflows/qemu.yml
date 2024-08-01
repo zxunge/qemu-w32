@@ -36,9 +36,10 @@ jobs:
       - shell: msys2 {0}
         name: build qemu
         run: |
-          wget -q https://download.qemu.org/qemu-9.0.2.tar.bz2
-          tar xjf qemu-9.0.2.tar.bz2
-          cd qemu-9.0.2
+          git clone https://gitlab.com/qemu-project/qemu.git
+          cd qemu
+          git submodule init
+          git submodule update --recursive
           ./configure --prefix='${{ github.workspace }}\qemu-w32' --enable-sdl --enable-gtk --enable-whpx
           make install
 
