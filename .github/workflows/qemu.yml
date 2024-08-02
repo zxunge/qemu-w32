@@ -30,10 +30,10 @@ jobs:
             git
             wget
             p7zip
-            base-devel 
-            mingw-w64-i686-toolchain 
+            base-devel  
             python 
             ninja
+            mingw-w64-i686-toolchain
             mingw-w64-i686-gtk3
             mingw-w64-i686-SDL2 
             mingw-w64-i686-libslirp
@@ -41,7 +41,7 @@ jobs:
             mingw-w64-i686-libtasn1
             mingw-w64-i686-libnfs
             mingw-w64-i686-libssh
-            libutil-linux-devel
+            mingw-w64-i686-SDL2_image
 
       - shell: msys2 {0}
         name: build qemu
@@ -61,7 +61,7 @@ jobs:
         with:
           name: QEMU
           path: D:/msys64/opt/QEMU.7z
-          compression-level: 9
+          compression-level: 0
            
           
     
