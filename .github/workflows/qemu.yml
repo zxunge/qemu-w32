@@ -41,6 +41,7 @@ jobs:
             mingw-w64-i686-libtasn1
             mingw-w64-i686-libnfs
             mingw-w64-i686-libssh
+            libutil-linux-devel
 
       - shell: msys2 {0}
         name: build qemu
