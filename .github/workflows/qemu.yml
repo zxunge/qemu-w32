@@ -41,12 +41,13 @@ jobs:
       - shell: msys2 {0}
         name: build qemu
         run: |
+          pip install Sphinx
           git clone https://gitlab.com/qemu-project/qemu.git
           cp -rf configure qemu/
           cd qemu
           git submodule init
           git submodule update --recursive
-          ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk
+          ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk --bindir=bin --enable-xen --strip=true
           make -j$(nproc) install
           7zr a -mx9 -mqs=on -mmt=on /opt/QEMU.7z /opt/qemu/*
 
@@ -54,7 +55,7 @@ jobs:
         with:
           name: QEMU
           path: D:/msys64/opt/QEMU.7z
-          compression-level: 0
+          compression-level: 9
            
           
     
