@@ -38,6 +38,9 @@ jobs:
             mingw-w64-i686-SDL2 
             mingw-w64-i686-libslirp
             mingw-w64-i686-python-pip
+            mingw-w64-i686-libtasn1
+            mingw-w64-i686-libnfs
+            mingw-w64-i686-libssh
 
       - shell: msys2 {0}
         name: build qemu
@@ -48,7 +51,7 @@ jobs:
           cd qemu
           git submodule init
           git submodule update --recursive
-          ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk --bindir=bin --enable-xen --enable-kvm -Dstrip=true
+          ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk --bindir=bin --enable-xen -Dstrip=true
           make -j$(nproc) install
           7zr a -mx9 -mqs=on -mmt=on /opt/QEMU.7z /opt/qemu/*
 
