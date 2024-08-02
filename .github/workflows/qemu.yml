@@ -29,6 +29,7 @@ jobs:
           install: >-
             git
             wget
+            p7zip
             base-devel 
             mingw-w64-i686-toolchain 
             python 
@@ -47,12 +48,13 @@ jobs:
           git submodule update --recursive
           ./configure --prefix=/opt/qemu --enable-sdl --disable-whpx --enable-gtk
           make -j$(nproc) install
+          7zr a -mx9 -mqs=on -mmt=on /opt/QEMU.7z /opt/qemu/*
 
       - uses: actions/upload-artifact@v4
         with:
           name: QEMU
-          path: D:/msys64/opt/qemu
-          compression-level: 9
+          path: D:/msys64/opt/QEMU.7z
+          compression-level: 0
            
           
     
