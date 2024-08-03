@@ -31,10 +31,12 @@ jobs:
             wget
             p7zip
             base-devel  
+            libcurl-devel
             python 
             ninja
             mingw-w64-i686-toolchain
             mingw-w64-i686-gtk3
+            mingw-w64-i686-nettle
             mingw-w64-i686-SDL2 
             mingw-w64-i686-libslirp
             mingw-w64-i686-python-pip
@@ -42,6 +44,13 @@ jobs:
             mingw-w64-i686-libnfs
             mingw-w64-i686-libssh
             mingw-w64-i686-SDL2_image
+            mingw-w64-i686-ncurses
+            mingw-w64-i686-gnutls
+            mingw-w64-i686-libgcrypt
+            mingw-w64-i686-spice-protocol
+            mingw-w64-i686-librttopo
+            mingw-w64-i686-capstone
+            mingw-w64-i686-libusb-win32
 
       - shell: msys2 {0}
         name: build qemu
