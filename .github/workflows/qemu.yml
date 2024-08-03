@@ -34,6 +34,7 @@ jobs:
             libcurl-devel
             python 
             ninja
+            unzip
             mingw-w64-i686-toolchain
             mingw-w64-i686-gtk3
             mingw-w64-i686-nettle
@@ -55,6 +56,7 @@ jobs:
       - shell: msys2 {0}
         name: build qemu
         run: |
+          unzip -d /mingw32/bin iasl-win-20240321.zip 
           pip install Sphinx 
           pip install sphinx-rtd-theme
           git clone https://gitlab.com/qemu-project/qemu.git
